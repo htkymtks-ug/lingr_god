@@ -3,7 +3,11 @@ post '/' do
   hash = parser.parse(params[:json])
   hash["events"].map do |event|
     if event["message"]["text"] =~ /^!ruby (.+)$/
-      eval $1
+      begin
+        eval $1
+      rescue => e
+        e.message
+      end
     else
       nil
     end
