@@ -5,6 +5,7 @@ GEM
     sinatra (1.1.0)
       rack (~> 1.1)
       tilt (~> 1.1)
+    tapp (1.0.0)
     tilt (1.1)
     yajl-ruby (0.7.8)
 
@@ -13,4 +14,5 @@ PLATFORMS
 
 DEPENDENCIES
   sinatra
+  tapp
   yajl-ruby

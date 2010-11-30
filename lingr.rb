@@ -1,5 +1,4 @@
 post '/' do
-  "Hello Lingr!"
   parser = Yajl::Parser.new
-  pp parser.parse(params[:json])
+  parser.parse(params[:json]).tapp.inspect
 end
