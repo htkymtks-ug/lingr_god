@@ -6,9 +6,11 @@ GEM
       rack (~> 1.1)
       tilt (~> 1.1)
     tilt (1.1)
+    yajl-ruby (0.7.8)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
   sinatra
+  yajl-ruby
