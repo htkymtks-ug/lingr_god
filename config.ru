@@ -1,1 +1,5 @@
-run lambda { |env| [200, {'Content-Type'=>'text/plain'}, StringIO.new("Hello!")] }
+require 'bundler'
+Bundler.require
+
+require 'lingr'
+run Sinatra::Application
