@@ -19,14 +19,26 @@ post '/' do
         e.message
       end
     when /^!ruby= (.+)$/
+      fds = [STDOUT, STDERR]
+      orig_fds = fds.map(&:dup)
+      buf = Tempfile.new('god')
+
+      fds.each do |fd|
+        fd.reopen(buf)
+      end
+
       begin
-        buf = $stdout = $stderr = StringIO.new
         eval $1
-        buf.string
+        fds.each(&:flush)
+        buf.tap(&:rewind).read
       rescue Exception => e
         e.message
       ensure
-        $stdout, $stderr = STDOUT, STDERR
+        fds.zip(orig_fds).each do |fd, orig|
+          fd.reopen(orig)
+        end
+
+        buf.close
       end
     when /^!fav$/
       item = RSS::Parser.new('http://favstar.fm/users/htkymtks/rss').parse.items.choice
