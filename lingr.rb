@@ -20,7 +20,11 @@ post '/' do
       item = RSS::Parser.new('http://favstar.fm/users/htkymtks/rss').parse.items.choice
       "#{item.title}\n#{item.link}"
     else
-      nil
+      if event["message"]["speaker_id"] == "htkymtks"
+        "え？解説してください。"
+      else
+        nil
+      end
     end
   end.join("\n")
 end
