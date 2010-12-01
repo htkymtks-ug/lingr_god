@@ -5,7 +5,7 @@ post '/' do
     if event["message"]["text"] =~ /^!ruby (.+)$/
       begin
         eval $1
-      rescue => e
+      rescue Exception => e
         e.message
       end
     else
