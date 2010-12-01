@@ -1,3 +1,9 @@
+set :views, File.join(File.dirname(__FILE__), 'views')
+
+get '/' do
+  haml :index
+end
+
 post '/' do
   parser = Yajl::Parser.new
   hash = parser.parse(params[:json])
