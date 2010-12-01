@@ -8,9 +8,9 @@ get '/' do
 end
 
 post '/' do
-  parser = Yajl::Parser.new
-  hash = parser.parse(params[:json])
-  hash["events"].map do |event|
+  hash = Yajl::Parser.new.parse(params[:json])
+
+  hash["events"].map {|event|
     case event["message"]["text"]
     when /^!ruby (.+)$/
       begin
@@ -38,5 +38,5 @@ post '/' do
         nil
       end
     end
-  end.join("\n")
+  }.join("\n")
 end
