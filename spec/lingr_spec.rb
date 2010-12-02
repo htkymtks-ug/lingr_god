@@ -1,6 +1,6 @@
 # coding: utf-8
-require 'spec_helper'
-require 'lingr'
+require_relative 'spec_helper'
+require_relative '../lingr'
 
 describe Sinatra::Application do
   subject { last_response }
