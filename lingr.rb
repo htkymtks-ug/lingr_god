@@ -1,12 +1,12 @@
 # coding: utf-8
-
 $LOAD_PATH.unshift File.expand_path('../lib', __FILE__)
+
 require 'sinatra'
 require 'sinatra/lingr_bot'
 require 'sinatra/capture_output'
 require 'rss'
 
-set :views, File.join(File.dirname(__FILE__), 'views')
+set :app_file, __FILE__
 
 get '/' do
   haml :index

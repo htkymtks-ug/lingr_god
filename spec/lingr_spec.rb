@@ -17,7 +17,7 @@ describe Sinatra::Application do
   describe 'POST /' do
     context 'with message `!ruby`' do
       before :all do
-        post '/', :json => {
+        post '/', json: {
           :events => [
             {:message => {:text => '!ruby "hoge"'}}
           ]
@@ -30,7 +30,7 @@ describe Sinatra::Application do
 
     context 'with message `!ruby=`' do
       before :all do
-        post '/', :json => {
+        post '/', json: {
           :events => [
             {:message => {:text => '!ruby= print "fuga"'}}
           ]
@@ -57,7 +57,7 @@ describe Sinatra::Application do
           }.to_s
         )
 
-        post '/', :json => {
+        post '/', json: {
           :events => [
             {:message => {:text => '!fav'}}
           ]
@@ -70,7 +70,7 @@ describe Sinatra::Application do
 
     context "with god's message" do
       before :all do
-        post '/', :json => {
+        post '/', json: {
           :events => [
             {:message => {:speaker_id => 'htkymtks'}}
           ]
@@ -83,7 +83,7 @@ describe Sinatra::Application do
 
     context 'with miscellaneous message' do
       before :all do
-        post '/', :json => {
+        post '/', json: {
           :events => [
             {:message => {:text => 'hi', :speaker_id => 'ursm'}}
           ]
