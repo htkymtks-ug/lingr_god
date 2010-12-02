@@ -21,7 +21,7 @@ lingr_endpoint '/' do |event|
       e.message
     end
   when /^!fav$/
-    item = RSS::Parser.new('http://favstar.fm/users/htkymtks/rss').parse.items.choice
+    item = RSS::Parser.new('http://favstar.fm/users/htkymtks/rss').parse.items.sample
     "#{item.title}\n#{item.link}"
   else
     if event.message.speaker_id == "htkymtks"

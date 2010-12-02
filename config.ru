@@ -1,5 +1,5 @@
 require 'bundler'
 Bundler.require :default
 
-require 'lingr'
+require './lingr'
 run Sinatra::Application
