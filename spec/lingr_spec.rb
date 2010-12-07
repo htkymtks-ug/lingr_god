@@ -68,6 +68,19 @@ describe Sinatra::Application do
       its(:body) { should == "[title]\n[link]" }
     end
 
+    context "with message !chainsaw" do
+      before :all do
+        post '/', json: {
+          :events => [
+            {:message => {:text => '!chainsaw'}}
+          ]
+        }.to_json
+      end
+
+      it { should be_ok }
+      its(:body) { should == "http://farm6.static.flickr.com/5161/5240705190_edc4d29853.jpg" }
+    end
+
     context "with god's message" do
       before :all do
         post '/', json: {
