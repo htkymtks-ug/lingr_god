@@ -25,6 +25,8 @@ lingr_endpoint '/' do |event|
     "#{item.title}\n#{item.link}"
   when /^!chainsaw$/
     "http://farm6.static.flickr.com/5161/5240705190_edc4d29853_m.jpg"
+  when /^そんな装備で大丈夫か$/
+    "http://image.space.rakuten.co.jp/lg01/10/0001062610/96/imgc4ca50c0zik6zj.gif\n大丈夫だ。問題ない。"
   else
     if event.message.speaker_id == "htkymtks"
       "え？解説してください。"

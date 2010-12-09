@@ -81,6 +81,19 @@ describe Sinatra::Application do
       its(:body) { should == "http://farm6.static.flickr.com/5161/5240705190_edc4d29853_m.jpg" }
     end
 
+    context "with message 'そんな装備で大丈夫か'" do
+      before :all do
+        post '/', json: {
+          :events => [
+            {:message => {:text => 'そんな装備で大丈夫か'}}
+          ]
+        }.to_json
+      end
+
+      it { should be_ok }
+      its(:body) { should == "http://image.space.rakuten.co.jp/lg01/10/0001062610/96/imgc4ca50c0zik6zj.gif\n大丈夫だ。問題ない。" }
+    end
+
     context "with god's message" do
       before :all do
         post '/', json: {
