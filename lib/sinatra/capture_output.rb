@@ -2,7 +2,7 @@ require 'sinatra/base'
 require 'tempfile'
 
 module Sinatra
-  module CaputureOutputHelper
+  module CaptureOutputHelper
     def capture_output(&block)
       fds = [STDOUT, STDERR]
       orig_fds = fds.map(&:dup)
@@ -29,5 +29,5 @@ module Sinatra
     end
   end
 
-  helpers CaputureOutputHelper
+  helpers CaptureOutputHelper
 end
