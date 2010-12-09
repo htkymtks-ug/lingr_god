@@ -3,6 +3,14 @@ require_relative 'spec_helper'
 require_relative '../lingr'
 
 describe Sinatra::Application do
+  def app
+    described_class
+  end
+
+  before :suite do
+    set :environment, :test
+  end
+
   subject { last_response }
 
   describe 'GET /' do
@@ -95,16 +103,35 @@ describe Sinatra::Application do
     end
 
     context "with god's message" do
-      before :all do
-        post '/', json: {
-          :events => [
-            {:message => {:speaker_id => 'htkymtks'}}
-          ]
-        }.to_json
+      context 'm_seki' do
+        before :all do
+          stub.instance_of(app).m_seki? { true }
+
+          post '/', json: {
+            events: [
+              {message: {speaker_id: 'htkymtks'}}
+            ]
+          }.to_json
+        end
+
+        it { should be_ok }
+        its(:body) { should_not be_empty }
       end
 
-      it { should be_ok }
-      its(:body) { should_not be_empty }
+      context 'not m_seki' do
+        before :all do
+          stub.instance_of(app).m_seki? { false }
+
+          post '/', json: {
+            events: [
+              {message: {speaker_id: 'htkymtks'}}
+            ]
+          }.to_json
+        end
+
+        it { should be_ok }
+        its(:body) { should be_empty }
+      end
     end
 
     context 'with miscellaneous message' do

@@ -8,6 +8,12 @@ require 'rss'
 
 set :app_file, __FILE__
 
+helpers do
+  def m_seki?
+    rand(5) == 0
+  end
+end
+
 get '/' do
   haml :index
 end
@@ -28,7 +34,7 @@ lingr_endpoint '/' do |event|
   when /^そんな装備で大丈夫か$/
     "http://image.space.rakuten.co.jp/lg01/10/0001062610/96/imgc4ca50c0zik6zj.gif\n大丈夫だ。問題ない。"
   else
-    if event.message.speaker_id == "htkymtks" && rand(5) == 0
+    if event.message.speaker_id == "htkymtks" && m_seki?
       "え？解説してください。"
     else
       nil
