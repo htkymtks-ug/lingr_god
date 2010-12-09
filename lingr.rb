@@ -28,7 +28,7 @@ lingr_endpoint '/' do |event|
   when /^そんな装備で大丈夫か$/
     "http://image.space.rakuten.co.jp/lg01/10/0001062610/96/imgc4ca50c0zik6zj.gif\n大丈夫だ。問題ない。"
   else
-    if event.message.speaker_id == "htkymtks"
+    if event.message.speaker_id == "htkymtks" && rand(5) == 0
       "え？解説してください。"
     else
       nil
