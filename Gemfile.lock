@@ -1,3 +1,9 @@
+GIT
+  remote: git://github.com/astrails/http_require.git
+  revision: 0f5585f80b7d0a62375cf1f4d312862144482144
+  specs:
+    http_require (0.0.1)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -34,6 +40,7 @@ PLATFORMS
 DEPENDENCIES
   haml
   hashie
+  http_require!
   rack-test
   rr
   rspec

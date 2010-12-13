@@ -4,6 +4,7 @@ gem 'sinatra'
 gem 'yajl-ruby', require: 'yajl/json_gem'
 gem 'haml'
 gem 'hashie'
+gem 'http_require', git: 'git://github.com/astrails/http_require.git'
 gem 'tapp'
 
 group :test do
