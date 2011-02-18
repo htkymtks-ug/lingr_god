@@ -25,7 +25,7 @@ describe Sinatra::Application do
   describe 'POST /' do
     context 'with message `!ruby`' do
       before :all do
-        post '/', json: {
+        post '/', {
           :events => [
             {:message => {:text => '!ruby "hoge"'}}
           ]
@@ -38,7 +38,7 @@ describe Sinatra::Application do
 
     context 'with message `!ruby=`' do
       before :all do
-        post '/', json: {
+        post '/', {
           :events => [
             {:message => {:text => '!ruby= print "fuga"'}}
           ]
@@ -65,7 +65,7 @@ describe Sinatra::Application do
           }.to_s
         )
 
-        post '/', json: {
+        post '/', {
           :events => [
             {:message => {:text => '!fav'}}
           ]
@@ -78,7 +78,7 @@ describe Sinatra::Application do
 
     context "with message !chainsaw" do
       before :all do
-        post '/', json: {
+        post '/', {
           :events => [
             {:message => {:text => '!chainsaw'}}
           ]
@@ -91,7 +91,7 @@ describe Sinatra::Application do
 
     context "with message 'そんな装備で大丈夫か'" do
       before :all do
-        post '/', json: {
+        post '/', {
           :events => [
             {:message => {:text => 'そんな装備で大丈夫か'}}
           ]
@@ -107,7 +107,7 @@ describe Sinatra::Application do
         before :all do
           stub.instance_of(app).m_seki? { true }
 
-          post '/', json: {
+          post '/', {
             events: [
               {message: {speaker_id: 'htkymtks'}}
             ]
@@ -122,7 +122,7 @@ describe Sinatra::Application do
         before :all do
           stub.instance_of(app).m_seki? { false }
 
-          post '/', json: {
+          post '/', {
             events: [
               {message: {speaker_id: 'htkymtks'}}
             ]
@@ -136,7 +136,7 @@ describe Sinatra::Application do
 
     context 'with miscellaneous message' do
       before :all do
-        post '/', json: {
+        post '/', {
           :events => [
             {:message => {:text => 'hi', :speaker_id => 'ursm'}}
           ]

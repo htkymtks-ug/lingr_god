@@ -6,7 +6,7 @@ module Sinatra
   module LingrBot
     def lingr_endpoint(path, &block)
       post path do
-        hash = JSON.parse(params[:json])
+        hash = JSON.parse(request.body)
 
         hash['events'].map {|event|
           instance_exec(Hashie::Mash.new(event), &block)
